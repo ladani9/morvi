@@ -1,0 +1,766 @@
+/* General Body and Typography */
+body {
+    font-family: 'Inter', sans-serif; /* Google Font: Inter */
+    background-color: #f8fafc; /* Light blue-gray background */
+    color: #334155; /* Darker gray for general text */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Container for main content */
+.main-content-area {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Header Styling */
+.main-header {
+    background: linear-gradient(to right, #1e3a8a, #172554);
+    color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+/* CORRECTED: The header container needs to be a flexbox on all screen sizes */
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.site-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0;
+}
+
+/* Navigation Links */
+/* On mobile, the navigation is hidden by default using the .hidden-mobile class. 
+The layout properties below are for the desktop view, defined inside the media query. */
+.main-navigation {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-link:hover {
+    background-color: #1e40af;
+}
+
+/* Mobile Menu Specifics */
+/* CORRECTED: Show the mobile menu button on small screens */
+.mobile-menu-button {
+    display: block;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    outline: none;
+}
+
+.mobile-menu-button .menu-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke: currentColor;
+}
+
+/* JavaScript toggles these classes to show/hide the navigation */
+.hidden-mobile {
+    display: none;
+}
+
+.show-mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+    gap: 0.5rem;
+}
+
+/* Responsive Adjustments (Media Queries) */
+@media (min-width: 768px) {
+    .main-header .header-container {
+        flex-wrap: nowrap;
+    }
+
+    /* CORRECTED: Hide the mobile menu button on desktop */
+    .mobile-menu-button {
+        display: none;
+    }
+
+    /* CORRECTED: Set the navigation layout for desktop view */
+    .main-navigation {
+        display: flex !important; /* Use !important to override .hidden-mobile */
+        flex-direction: row;
+        gap: 1.5rem;
+        margin-top: 0;
+        width: auto;
+    }
+}
+
+/* Hero Section */
+.hero-section {
+    /* Original image URL from your upload */
+    background-image: url('../image/mani\ mandir.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; /* Needed for overlay positioning */
+    color: #ffffff;
+    padding: 5rem 1.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 3rem;
+    overflow: hidden; /* Ensure overlay doesn't spill */
+}
+
+/* Image Overlay - Increased opacity for a more dominant blue shade */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(59, 130, 246, 0.2); /* #3b82f6 with 70% opacity for stronger shade */
+    z-index: 1; /* Place overlay above image but below content */
+}
+
+.hero-content-wrapper {
+    position: relative; /* Bring content above the overlay */
+    z-index: 2;
+    max-width: 48rem; /* Equivalent to max-w-3xl */
+    background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent black overlay for text */
+    padding: 2rem;
+    border-radius: 0.75rem;
+    backdrop-filter: blur(4px); /* Frosted glass effect for text background */
+}
+
+.hero-title {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 800; /* Extra bold */
+    margin-bottom: 1rem;
+    line-height: 1.25;
+}
+
+.hero-description {
+    font-size: 1.125rem; /* 18px */
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons on small screens */
+    justify-content: center;
+    gap: 1rem; /* Space between buttons */
+}
+
+.button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px; /* Full rounded */
+    font-weight: 700; /* Bold */
+    font-size: 1.125rem; /* 18px */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none; /* Remove underline */
+    text-align: center;
+}
+
+.primary-button {
+    background-color: #facc15; /* Yellow */
+    color: #1e3a8a; /* Deep blue */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.primary-button:hover {
+    background-color: #fcd34d; /* Lighter yellow on hover */
+}
+
+.secondary-button {
+    background-color: #ffffff;
+    color: #1e3a8a; /* Deep blue */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-button:hover {
+    background-color: #f3f4f6; /* Light gray on hover */
+}
+
+/* Welcome Section */
+.welcome-section {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 1.875rem; /* 30px */
+    font-weight: 700; /* Bold */
+    color: #1e3a8a; /* Deep blue */
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.section-paragraph {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.75;
+    color: #4b5563; /* Gray */
+    margin-bottom: 1.5rem;
+}
+
+.section-paragraph.text-center {
+    text-align: center;
+}
+
+/* Featured Sections Grid */
+.featured-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on small screens */
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.featured-card {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.featured-card:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600; /* Semi-bold */
+    color: #1d4ed8; /* Medium blue */
+    margin-bottom: 1rem;
+}
+
+.card-description {
+    color: #4b5563; /* Gray */
+    margin-bottom: 1rem;
+}
+
+.card-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+    color: #4b5563; /* Gray */
+    margin-bottom: 1rem;
+}
+
+.card-list li {
+    margin-bottom: 0.5rem;
+}
+
+.card-link {
+    color: #2563eb; /* Blue */
+    font-weight: 500; /* Medium */
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.card-link:hover {
+    color: #1e40af; /* Darker blue on hover */
+}
+
+.link-icon {
+    width: 1rem; /* 16px */
+    height: 1rem; /* 16px */
+    margin-left: 0.5rem;
+}
+
+/* Call to Action for Feedback */
+.cta-section {
+    background-color: #dbeafe; /* Light blue */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feedback-cta .section-title {
+    color: #1e3a8a; /* Deep blue */
+}
+
+.cta-button {
+    background-color: #2563eb; /* Blue */
+    color: #ffffff;
+}
+
+.cta-button:hover {
+    background-color: #1e40af; /* Darker blue on hover */
+}
+
+/* Footer Styling */
+.main-footer {
+    background: linear-gradient(to right, #1e3a8a, #172554); /* Deep blue gradient */
+    color: #ffffff;
+    padding: 2rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    margin-top: 3rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on small screens */
+    gap: 2rem;
+}
+
+.footer-heading {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600; /* Semi-bold */
+    margin-bottom: 1rem;
+}
+
+.footer-text {
+    color: #e2e8f0; /* Light gray */
+    font-size: 0.875rem; /* 14px */
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-link {
+    color: #e2e8f0; /* Light gray */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #93c5fd; /* Lighter blue on hover */
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #93c5fd; /* Lighter blue on hover */
+}
+
+.social-icon svg {
+    width: 1.5rem; /* 24px */
+    height: 1.5rem; /* 24px */
+}
+
+.copyright-text {
+    text-align: center;
+    color: #cbd5e1; /* Even lighter gray */
+    font-size: 0.875rem; /* 14px */
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #1e40af; /* Darker blue border */
+}
+
+/* Responsive Adjustments (Media Queries) */
+@media (min-width: 768px) {
+    .main-header .header-container {
+        flex-wrap: nowrap; /* Prevent wrapping on medium+ screens */
+    }
+
+    .mobile-menu-button {
+        display: none; /* Hide hamburger on desktop */
+    }
+
+    .main-navigation {
+        display: flex; /* Show nav on desktop */
+        flex-direction: row;
+        margin-top: 0;
+        width: auto;
+    }
+
+    .hero-buttons {
+        flex-direction: row; /* Buttons side-by-side on larger screens */
+    }
+
+    .featured-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium+ screens */
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns in footer on medium+ screens */
+    }
+}
+
+
+/* --- Styles for Businesses Page Content --- */
+
+/* Welcome Section on Businesses Page */
+.welcome-section {
+    background-color: #ffffff; /* White background for content cards */
+    padding: 2rem; /* Ample padding */
+    border-radius: 1rem; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 3rem; /* Space below the section */
+    text-align: center; /* Center text for the welcome message */
+}
+
+.welcome-section .section-title {
+    font-size: 1.875rem; /* 30px */
+    font-weight: 700; /* Bold */
+    color: #1e3a8a; /* Deep blue, matching header/footer */
+    margin-bottom: 1.5rem;
+}
+
+.welcome-section .section-paragraph {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.75;
+    color: #4b5563; /* Gray text */
+    margin-bottom: 0; /* No bottom margin if it's the last paragraph */
+}
+
+/* Featured Grid for Business Cards */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 2rem; /* Space between cards */
+    margin-bottom: 3rem; /* Space below the grid */
+}
+
+/* Individual Business Card Styling */
+.featured-card {
+    background-color: #ffffff; /* White background for cards */
+    padding: 1.5rem; /* Padding inside cards */
+    border-radius: 1rem; /* Rounded corners for cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    display: flex; /* Use flexbox for content alignment */
+    flex-direction: column; /* Stack content vertically */
+}
+
+.featured-card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.business-image {
+    width: 100%; /* Make image fill card width */
+    height: 180px; /* Fixed height for consistency */
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    border-radius: 0.75rem; /* Rounded corners for images */
+    margin-bottom: 1rem; /* Space below image */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Small shadow for image */
+}
+
+.card-title {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600; /* Semi-bold */
+    color: #1d4ed8; /* Medium blue for titles */
+    margin-bottom: 0.75rem; /* Space below title */
+}
+
+.card-description {
+    color: #4b5563; /* Gray text for description */
+    margin-bottom: 1rem; /* Space below description */
+    flex-grow: 1; /* Allows description to take available space, pushing link to bottom */
+}
+
+.card-list {
+    list-style: none; /* Remove default list bullets */
+    padding: 0;
+    margin-bottom: 1rem; /* Space below list */
+    color: #4b5563; /* Gray text for list items */
+}
+
+.card-list li {
+    margin-bottom: 0.5rem; /* Space between list items */
+    font-size: 0.95rem; /* Slightly smaller font for list items */
+    display: flex;
+    align-items: center;
+}
+
+.card-list li::before {
+    content: '•'; /* Custom bullet point */
+    color: #2563eb; /* Blue bullet */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.card-link {
+    color: #2563eb; /* Blue for links */
+    font-weight: 500; /* Medium font weight */
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth color change on hover */
+    margin-top: auto; /* Pushes the link to the bottom of the card */
+}
+
+.card-link:hover {
+    color: #1e40af; /* Darker blue on hover */
+}
+
+.link-icon {
+    width: 1rem; /* 16px */
+    height: 1rem; /* 16px */
+    margin-left: 0.5rem; /* Space between text and icon */
+}
+
+/* Responsive Adjustments for Businesses Page */
+@media (min-width: 768px) {
+    .featured-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .featured-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens */
+    }
+}
+
+
+/* --- Styles for Map Page Content --- */
+
+/* Specific styles for the map container */
+.map-container {
+    width: 100%;
+    height: 500px; /* Adjust height as needed */
+    border-radius: 1rem;
+    overflow: hidden; /* Ensures the iframe corners are rounded */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0; /* Remove iframe default border */
+}
+
+/* Responsive adjustments for map height */
+@media (max-width: 767px) {
+    .map-container {
+        height: 350px; /* Shorter height on mobile */
+    }
+}
+
+
+/* --- Styles for Feedback Page Content --- */
+
+/* Specific styles for the feedback form container */
+.feedback-form-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 2rem auto; /* Center the form */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #334155;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e1; /* Light gray border */
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #4b5563;
+    box-sizing: border-box; /* Include padding in width */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #2563eb; /* Blue border on focus */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); /* Light blue shadow on focus */
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background-color: #2563eb; /* Blue button */
+    color: #ffffff;
+    font-weight: 700;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.125rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #1e40af; /* Darker blue on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Styles for Events Page Content --- */
+
+/* Featured Grid for Event Cards (reusing existing styles from businesses page) */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 2rem; /* Space between cards */
+    margin-bottom: 3rem; /* Space below the grid */
+}
+
+/* Individual Event Card Styling (reusing existing styles from businesses page) */
+.featured-card {
+    background-color: #ffffff; /* White background for cards */
+    padding: 1.5rem; /* Padding inside cards */
+    border-radius: 1rem; /* Rounded corners for cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    display: flex; /* Use flexbox for content alignment */
+    flex-direction: column; /* Stack content vertically */
+}
+
+.featured-card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.business-image { /* Renamed from business-image to event-image if specific styling is needed */
+    width: 100%; /* Make image fill card width */
+    height: 180px; /* Fixed height for consistency */
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    border-radius: 0.75rem; /* Rounded corners for images */
+    margin-bottom: 1rem; /* Space below image */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Small shadow for image */
+}
+
+.card-title {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600; /* Semi-bold */
+    color: #1d4ed8; /* Medium blue for titles */
+    margin-bottom: 0.75rem; /* Space below title */
+}
+
+.card-description {
+    color: #4b5563; /* Gray text for description */
+    margin-bottom: 1rem; /* Space below description */
+    flex-grow: 1; /* Allows description to take available space, pushing link to bottom */
+}
+
+.card-list {
+    list-style: none; /* Remove default list bullets */
+    padding: 0;
+    margin-bottom: 1rem; /* Space below list */
+    color: #4b5563; /* Gray text for list items */
+}
+
+.card-list li {
+    margin-bottom: 0.5rem; /* Space between list items */
+    font-size: 0.95rem; /* Slightly smaller font for list items */
+    display: flex;
+    align-items: center;
+}
+
+.card-list li::before {
+    content: '•'; /* Custom bullet point */
+    color: #2563eb; /* Blue bullet */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.card-link {
+    color: #2563eb; /* Blue for links */
+    font-weight: 500; /* Medium font weight */
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth color change on hover */
+    margin-top: auto; /* Pushes the link to the bottom of the card */
+}
+
+.card-link:hover {
+    color: #1e40af; /* Darker blue on hover */
+}
+
+.link-icon {
+    width: 1rem; /* 16px */
+    height: 1rem; /* 16px */
+    margin-left: 0.5rem; /* Space between text and icon */
+}
+
+/* Responsive Adjustments for Events Page (reusing existing media queries) */
+@media (min-width: 768px) {
+    .featured-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .featured-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens */
+    }
+}
+
+
+
